@@ -51,9 +51,9 @@ public class PlayerController : MonoBehaviour
             speed = 10;
         }
         else
-        { */
+        { 
             speed = 5;
-      //  } 
+       } */
 
         if( isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
     {
         Move(); //runs the Move function
         Hidding();
-        if(horizontalMove < 0 && !facingRight) //checks if the player is moving and is not facing right
+        if(horizontalMove > 0 && !facingRight) //checks if the player is moving and is not facing right
         {
             Flip();
         }
@@ -89,9 +89,7 @@ public class PlayerController : MonoBehaviour
     private void Flip()
     {
         facingRight = !facingRight; //changes the bool as the player turns
-        Vector3 theScale = transform.localScale; //Storing the transform scale of the character as a vector3
-        theScale.x *= -1; //inverting the scale to turn the player around
-        transform.localScale = theScale;
+        transform.Rotate(Vector3.up * 180);
     }
 
     private void Hidding()
@@ -133,7 +131,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)  //playerkill script
     {
-        if(col.gameObject.tag.Equals("Enemy"))
+        if(col.gameObject.tag.Equals("ENEMY"))
         {
             GameOverText.SetActive(true); //makes Game Over appear
             restartButton.SetActive(true); // makes the button appear
