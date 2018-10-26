@@ -94,13 +94,12 @@ public class PlayerController : MonoBehaviour
 
     private void Hidding()
     {
-        if (isHidden == false && Input.GetKeyDown((KeyCode.F)) && hidingSpot == true) //checks if the player is not hidden and if the player pressed f
+        if (isHidden == false  && hidingSpot == true) //checks if the player is not hidden and if the player pressed f
         {
             gameObject.layer = 11; //changing the player's layer
             isHidden = true;
         }
-
-        if (isHidden == true && Input.GetKeyDown((KeyCode.F))) //checks if the player is hidden and if the player pressed f
+        else if (isHidden == true && hidingSpot == false)
         {
             gameObject.layer = 8; //changing the player's layer back to normal
             isHidden = false;
@@ -129,9 +128,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D col)  //playerkill script
+    private void OnCollisionEnter2D(Collision2D col)  //playerkill script 
     {
-        if(col.gameObject.tag.Equals("ENEMY"))
+        if( col.gameObject.tag.Equals("ENEMY") && gameObject.layer == 8) 
         {
             GameOverText.SetActive(true); //makes Game Over appear
             restartButton.SetActive(true); // makes the button appear

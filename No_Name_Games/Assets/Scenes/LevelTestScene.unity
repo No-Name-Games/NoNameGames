@@ -805,7 +805,7 @@ GameObject:
   - component: {fileID: 222824314}
   - component: {fileID: 222824313}
   - component: {fileID: 222824312}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Guard(F1-Left)
   m_TagString: ENEMY
   m_Icon: {fileID: 0}
@@ -1239,6 +1239,50 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 360786236}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &361100647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 361100648}
+  - component: {fileID: 361100649}
+  m_Layer: 8
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &361100648
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 361100647}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1458528112}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &361100649
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 361100647}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0041382606, y: 0.01240837}
+  serializedVersion: 2
+  m_Radius: 0.18070672
 --- !u!1 &376666810
 GameObject:
   m_ObjectHideFlags: 0
@@ -2600,7 +2644,7 @@ GameObject:
   - component: {fileID: 641323031}
   - component: {fileID: 641323030}
   - component: {fileID: 641323029}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Guard(F1-Middle)
   m_TagString: ENEMY
   m_Icon: {fileID: 0}
@@ -3645,7 +3689,7 @@ GameObject:
   - component: {fileID: 1218729653}
   - component: {fileID: 1218729652}
   - component: {fileID: 1218729651}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Guard(F3-Right)
   m_TagString: ENEMY
   m_Icon: {fileID: 0}
@@ -4375,7 +4419,6 @@ GameObject:
   - component: {fileID: 1458528109}
   - component: {fileID: 1458528108}
   - component: {fileID: 1458528107}
-  - component: {fileID: 1458528106}
   - component: {fileID: 1458528113}
   m_Layer: 8
   m_Name: Player
@@ -4384,21 +4427,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!58 &1458528106
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1458528105}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0041382606, y: 0.01240837}
-  serializedVersion: 2
-  m_Radius: 0.18070672
 --- !u!61 &1458528107
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4541,6 +4569,7 @@ Transform:
   m_LocalScale: {x: 1.0761, y: 1.0761, z: 1.0761}
   m_Children:
   - {fileID: 1823237157}
+  - {fileID: 361100648}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4556,7 +4585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ladderCheck: 0
-  ladderSpeed: 10
+  ladderSpeed: 2
 --- !u!1 &1516363656
 GameObject:
   m_ObjectHideFlags: 0
@@ -5023,7 +5052,7 @@ GameObject:
   - component: {fileID: 1643405326}
   - component: {fileID: 1643405325}
   - component: {fileID: 1643405324}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Guard(F2-Left)
   m_TagString: ENEMY
   m_Icon: {fileID: 0}
@@ -5637,7 +5666,7 @@ GameObject:
   - component: {fileID: 1792763410}
   - component: {fileID: 1792763409}
   - component: {fileID: 1792763408}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Guard(F2-Middle)
   m_TagString: ENEMY
   m_Icon: {fileID: 0}
@@ -5789,7 +5818,7 @@ GameObject:
   - component: {fileID: 1866422565}
   - component: {fileID: 1866422564}
   - component: {fileID: 1866422563}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Guard(F3-Left)
   m_TagString: ENEMY
   m_Icon: {fileID: 0}
@@ -6579,7 +6608,7 @@ GameObject:
   - component: {fileID: 2083839590}
   - component: {fileID: 2083839589}
   - component: {fileID: 2083839588}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Guard(F3-Middle)
   m_TagString: ENEMY
   m_Icon: {fileID: 0}
