@@ -9,6 +9,7 @@ TagManager:
   - HidingSpot
   - Wall
   - ENEMY
+  - Hiding
   layers:
   - Default
   - TransparentFX

@@ -2,8 +2,8 @@ fileFormatVersion: 2
 guid: e31300fd07aeca448938969dee4a013d
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Character Idle Spritesheet_1
-    21300002: Character Idle Spritesheet_0
+    21300000: Character Idle Spritesheet_0
+    21300002: Character Idle Spritesheet_1
     21300004: Character Idle Spritesheet_2
     21300006: Character Idle Spritesheet_3
   externalObjects: {}
@@ -49,7 +49,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -147,9 +147,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 29
-        width: 15
-        height: 29
+        y: 87
+        width: 45
+        height: 87
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,7 +157,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0386e466ae248524383ae8b4494886c6
+      spriteID: 253b695c790d17b4aab10deca6b06b16
       vertices: []
       indices: 
       edges: []
@@ -166,10 +166,10 @@ TextureImporter:
       name: Character Idle Spritesheet_1
       rect:
         serializedVersion: 2
-        x: 15
-        y: 29
-        width: 15
-        height: 29
+        x: 45
+        y: 87
+        width: 45
+        height: 87
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,7 +177,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 556a51dde8e7e0e439378dde443fcfa7
+      spriteID: bb21e928381728540a3ec1a106e2e638
       vertices: []
       indices: 
       edges: []
@@ -188,8 +188,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 15
-        height: 29
+        width: 45
+        height: 87
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,7 +197,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff9da5929a3e94b48a43b2784e53f48f
+      spriteID: a538b976081e3fe4e850c11191100a29
       vertices: []
       indices: 
       edges: []
@@ -206,10 +206,10 @@ TextureImporter:
       name: Character Idle Spritesheet_3
       rect:
         serializedVersion: 2
-        x: 15
+        x: 45
         y: 0
-        width: 15
-        height: 29
+        width: 45
+        height: 87
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,7 +217,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4eb5b43e2e9c797429437f718e4dc375
+      spriteID: 3b0716fd51f9b4841a347a60c2ee01c9
       vertices: []
       indices: 
       edges: []
@@ -225,7 +225,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ac4d62fc11feaab47abe5d292125333c
+    spriteID: a3ea616d5586bc447be383f43110ab09
     vertices: []
     indices: 
     edges: []
