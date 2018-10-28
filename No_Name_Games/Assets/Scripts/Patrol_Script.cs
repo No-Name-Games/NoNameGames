@@ -13,9 +13,8 @@ public class Patrol_Script : MonoBehaviour
 {
     public float speed;
     private bool movingRight = true;
-    public Transform groundDetection;
-    public Transform wallDetection;
-    public int milliseconds; //Made public to allow different guards to have different delays in their patrol route
+   
+   // public int milliseconds; //Made public to allow different guards to have different delays in their patrol route
   //  public DetectionScript DetectBool; //Allowing this script to access the detection bool from Detection script.
     
     void Start()
@@ -26,31 +25,47 @@ public class Patrol_Script : MonoBehaviour
 
     void Update()
     {
-     
-            RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, 2f); //Raycast for detecting floor
-         //  RaycastHit2D wallInfo = Physics2D.Raycast(wallDetection.position, Vector2.right, 2f); //Raycast for detecting walls
+        transform.Translate(Vector2.right * speed * Time.deltaTime); //Guards forward movement
 
 
-        if ( groundInfo.collider == false /*|| wallInfo.collider == true */ ) // Getting info from colliders
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Wall" || collision.tag == "ENEMY")
+        {
+            if (movingRight == true)
             {
-                if (movingRight == true)
-                {
-                    Thread.Sleep(milliseconds); //Delay in the patrol
-                    transform.eulerAngles = new Vector3(0, -180, 0); //Flipping sprite
-                    movingRight = false;  //Changing sprite movement direction
-                }
-                else
-                {
-                    Thread.Sleep(milliseconds);
-                    transform.eulerAngles = new Vector3(0, 0, 0);
-                    movingRight = true;
-                }
+               // Thread.Sleep(milliseconds); //Delay in the patrol
+                transform.eulerAngles = new Vector3(0, -180, 0); //Flipping sprite
+                movingRight = false;  //Changing sprite movement direction
             }
             else
-            { 
-                transform.Translate(Vector2.right * speed * Time.deltaTime); //Guards forward movement
+            {
+               // Thread.Sleep(milliseconds);
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                movingRight = true;
             }
-      
+        }
     }
-   
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Ground")
+        {
+            if (movingRight == true)
+            {
+                // Thread.Sleep(milliseconds); //Delay in the patrol
+                transform.eulerAngles = new Vector3(0, -180, 0); //Flipping sprite
+                movingRight = false;  //Changing sprite movement direction
+            }
+            else
+            {
+                // Thread.Sleep(milliseconds);
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                movingRight = true;
+            }
+        }
+    }
+
 }

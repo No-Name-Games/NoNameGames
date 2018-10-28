@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
 
     public Transform groundCheck;
     float groundRadius = 0.2f; //setting the radius of the circle that checks if the player is on the ground
-    public LayerMask whatIsGround; 
+    public LayerMask whatIsGround;
+    GameObject guard;
 
     // public DetectionScript DetectBool; //Allowing this script to access the detection bool from Detection script.
 
@@ -39,25 +40,21 @@ public class PlayerController : MonoBehaviour
         myRb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         _childAnim = GetComponent<Animator>();
+        guard = GameObject.FindGameObjectWithTag("ENEMY");
 
     }
 
     
     void Update()
     {
+        Physics2D.IgnoreLayerCollision(10 , 11);
         _childAnim.SetFloat("speed", Mathf.Abs(myRb.velocity.x));
-       /* if (DetectBool.Detected == true) //making the player speed up to get away from guards
-        {
-            speed = 10;
-        }
-        else
-        { */
-            speed = 5;
-      //  } 
-
+        _childAnim.SetBool("grounded", isGrounded);
+        _childAnim.SetBool("hidden", isHidden);
         if( isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             myRb.AddForce(new Vector2(0, jumpForce)); //makes the player jump when space is pressed
+            
         }
     }
 
@@ -65,7 +62,7 @@ public class PlayerController : MonoBehaviour
     {
         Move(); //runs the Move function
         Hidding();
-        if(horizontalMove < 0 && !facingRight) //checks if the player is moving and is not facing right
+        if(horizontalMove > 0 && !facingRight) //checks if the player is moving and is not facing right
         {
             Flip();
         }
@@ -89,23 +86,24 @@ public class PlayerController : MonoBehaviour
     private void Flip()
     {
         facingRight = !facingRight; //changes the bool as the player turns
-        Vector3 theScale = transform.localScale; //Storing the transform scale of the character as a vector3
-        theScale.x *= -1; //inverting the scale to turn the player around
-        transform.localScale = theScale;
+        transform.Rotate(Vector3.up * 180);
     }
 
     private void Hidding()
     {
-        if (isHidden == false && Input.GetKeyDown((KeyCode.F)) && hidingSpot == true) //checks if the player is not hidden and if the player pressed f
+        if (isHidden == false  && hidingSpot == true) //checks if the player is not hidden and if the player pressed f
         {
+            
             gameObject.layer = 11; //changing the player's layer
             isHidden = true;
+            
         }
-
-        if (isHidden == true && Input.GetKeyDown((KeyCode.F))) //checks if the player is hidden and if the player pressed f
+        else if (isHidden == true && hidingSpot == false)
         {
+            gameObject.tag = "Player";
             gameObject.layer = 8; //changing the player's layer back to normal
             isHidden = false;
+            
         }
     }
 
@@ -115,9 +113,20 @@ public class PlayerController : MonoBehaviour
         {
             hidingSpot = true;
         }
-        else
+        else if(other.tag == "HidingSpot")
         {
             hidingSpot = false;
+        }
+
+        
+        if (gameObject.layer == 8)
+        {
+            if (other.gameObject.tag.Equals("ENEMY"))
+            {
+                GameOverText.SetActive(true); //makes Game Over appear
+                restartButton.SetActive(true); // makes the button appear
+                gameObject.SetActive(false); // halts the player
+            }
         }
     }
 
@@ -131,13 +140,5 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D col)  //playerkill script
-    {
-        if(col.gameObject.tag.Equals("Enemy"))
-        {
-            GameOverText.SetActive(true); //makes Game Over appear
-            restartButton.SetActive(true); // makes the button appear
-            gameObject.SetActive(false); // halts the player
-        }
-    }
+
 }

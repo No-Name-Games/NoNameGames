@@ -41,10 +41,12 @@ public class LadderScript : MonoBehaviour {
 
     private void LadderMovement()
     {
-        if(Input.GetKeyDown((KeyCode.Space)) && ladderCheck == true)
+        float verticleMove = Input.GetAxisRaw("Vertical");
+        if(Input.GetKey((KeyCode.Space)) && ladderCheck == true)
         {
             Vector2 ladderMove = myRb.velocity;
-            ladderMove.y = ladderSpeed;
+            ladderMove.y = ladderSpeed * verticleMove;
+            myRb.velocity = ladderMove;
         }
     }
 }

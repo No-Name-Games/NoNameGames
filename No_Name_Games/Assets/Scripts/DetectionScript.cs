@@ -2,35 +2,70 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 //Using Unity Engine.UI allows me to use a global variable that effects other scripts
 
 public class DetectionScript : MonoBehaviour {
 
-   /* public bool Detected = false; //Needed to effect other scripts
-    public Transform playerDetection; //Detection variable
-    int layerMask = 1 << 8; // This makes the detection raycast only check the 8th layer/the 'detection' layer.
-   
+    PlayerController pController;
+    GameObject player;
 
- 
-    void Start () {
-		
-	}
-	
-	
-	void Update ()
+    
+    public Image blackOverlay;
+    public float fadeTime = 3f;
+    float timeCounter = 0;
+    float fadePercentage;
+    public bool caught= false;
+    public GameObject GameOverText, restartButton;
+    
+
+    private void Start()
     {
-        RaycastHit2D playerInfo = Physics2D.Raycast(playerDetection.position, Vector2.right, 4f); //The raycast to detect the player, attached to a game object that is a child of the guard
-        
+        player = GameObject.FindGameObjectWithTag("Player");
+        pController = player.GetComponent<PlayerController>();
 
-        if ( playerInfo.collider == true && Physics.Raycast(transform.position, Vector3.forward, Mathf.Infinity, layerMask )) //This changes the global variable of detected to true if the player is within detection range and not in the hiding layer.
+        restartButton.SetActive(false);
+
+
+       blackOverlay.color = new Color(0, 0, 0, 0);
+       blackOverlay.gameObject.SetActive(true);
+
+    }
+
+    
+
+    private void Update()
+    {
+        if(caught == true)
         {
-            Detected = true;
+            timeCounter += Time.deltaTime;
+            fadePercentage = timeCounter / fadeTime;
+
+            blackOverlay.color = new Color(0, 0, 0, fadePercentage);
+
+            GameOverText.SetActive(true); 
+            restartButton.SetActive(true);
+
+            if (timeCounter > fadeTime + 3)
+            {
+            restartButton.SetActive(true);
+            }
+
+            // if restart button clicked, reload level
+            // ->
+
         }
-        else
+    }
+
+    
+    private void OnTriggerEnter2D(Collider2D other) //once the collider on the player hits something
+    {
+        if (other.tag == "Player")
         {
-            Detected = false;
+            pController.speed = 0;
+            pController.jumpForce = 0;
+            caught = true;
         }
-    } 
-    */
+    }
 } 
